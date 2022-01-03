@@ -1,0 +1,336 @@
+// this program proform functions using methods and arrays
+
+import java.util.Scanner;
+
+public class method_array
+{
+   // my declare the array. 
+
+   
+   static double [] nums = new double [20] ;
+
+
+   public static void main (String[]args)
+   {
+       // declare my varibles.
+      
+      Scanner KB = new Scanner(System.in) ;
+       int select , repeat ; 
+       double answer = 0 ; 
+
+       // populate my array.
+
+
+       System.out.println("enter the elements of the array."); 
+
+        input_m (); 
+
+
+       do {
+
+
+         System.out.println("select an operation "); 
+         select = KB. nextInt(); 
+
+         switch (select)
+         { 
+
+            
+
+            case 1 : 
+
+            // getting the sum of the positve numbers.
+
+
+            answer = sum_p();
+            output_m (answer); 
+           
+
+            break; 
+
+            case 2 : 
+
+            // getting the sum of the negative numbers. 
+
+            answer = sum_n();
+            output_m (answer);
+            
+
+            break ; 
+
+
+
+            case 3 : 
+            // displaying the positve odd numbers. 
+
+             positve_odd ( ); 
+           
+
+            break ; 
+
+
+            case 4 : 
+
+            // displaying the negatinve even numbers. 
+             negative_even ( );
+            
+
+            break ; 
+
+
+            case 5 : 
+
+            // display positive numbers in revers order. 
+             positve_revers( ) ;
+             
+
+            break; 
+
+            case 6 : 
+            // display negative number is revers order. 
+             negative_revers ( ); 
+             
+
+            break; 
+
+
+            case 7 :
+            // display all numbers of the array. 
+
+            num_m(); 
+            
+
+            break;  
+
+
+            case 8 :
+            // display the count of the negative numbers. 
+            answer = negative_count(); 
+            output_m (answer);
+
+            break ; 
+
+
+            case 9 : 
+
+            // display the count of the positive numbers. 
+
+           answer = positive_count(); 
+            output_m (answer); 
+            
+
+
+            break;
+
+            // if the input was wrong. 
+            default:
+            System.out.println ("worng input please try again ");
+            select = KB.nextInt();
+
+            break; 
+
+         }
+
+         System.out.println("enter 10 if you want to continue");
+         repeat= KB.nextInt();
+      
+ 
+      }while (repeat == 10 );
+
+   }
+   
+
+   // a method to get the array 
+
+
+
+   public static void input_m ()
+   {
+   // declare my scanner
+   Scanner KB = new Scanner(System.in);
+   
+      for (int i = 0 ; i < 20 ; i ++)
+      {
+       System.out.println("enter a number");
+       nums[i] = KB.nextDouble();
+       if (nums[i] < -100 || nums[i] > 100 )
+       nums[i] = input_val(nums[i]) ; 
+     
+      }
+    }
+
+// input validatin 
+
+
+   public static double input_val (double x )
+   {
+   // declare a scanner.
+   Scanner KB = new Scanner(System.in);
+   
+   while (x < -100|| x > 100 )
+   {
+   System.out.println ("worng input, please enter a new number \n") ;
+   x = KB.nextDouble();
+   }
+   
+   return x ;    
+
+   }
+// a method for the output. 
+
+
+   public static void output_m( double answer)
+   {
+      System.out.printf("the answer is %f \n , answer");
+   }
+// a mehtod for the sum of the positve numbres. 
+   public static double sum_p ()
+   {
+   double accu = 0 ;
+   
+   for (int i = 0 ; i < 20 ; i++ )
+   {
+      if ( nums[i] > 0 )
+      {
+      accu += nums[i] ; 
+      }
+
+   }
+
+   return accu ; 
+   }
+
+// a method for the sum of the negaitve numbers. 
+
+   public static double sum_n ()
+   {
+   double accu = 0 ;
+   
+   for (int i = 0 ; i < 20 ; i++ )
+   {
+      if ( nums[i] < 0 )
+      {
+      accu += nums[i] ; 
+      }
+
+   }
+
+   return accu ; 
+   }
+
+// a method for the poitive odd numbders. 
+
+
+public static void positve_odd ()
+{
+   
+   for (int i = 0 ; i < 20 ; i ++)
+   {
+      if (nums[i] >= 0 && nums[i] %2 == 1) 
+
+      System.out.print(nums[i]+" "); 
+ 
+   }
+}
+
+// a method for negative even numbers. 
+
+
+public static void negative_even ()
+{
+   
+
+   for (int i = 0 ; i < 20 ; i ++)
+   {
+      if (nums[i] < 0 && nums[i] %2 == 0)
+         System.out.print(nums[i]+" ");
+   
+    
+   } 
+     
+}
+
+// a method for positve numbers but in revers. 
+
+public static void  positve_revers ()
+{
+   
+   for (int i = 19 ; i >=0 ; i--)
+   {
+      if (nums[i] >= 0 )
+       System.out.print(nums[i]+" "); 
+   }
+}
+
+// a method for negative numvers but in revers. 
+
+
+public static void negative_revers ()
+{
+   
+
+   for (int i = 19 ; i >=0; i--)
+   {
+      if (nums[i] < 0 )
+   
+         System.out.print(nums[i]+" ");
+
+        
+   }
+    
+}
+
+
+// a method for printig all elments in the array. 
+
+public static void num_m ()
+{
+   
+
+   for (int i = 0 ; i < 20 ; i ++)
+     System.out.print(nums[i]+" ");
+
+      
+
+}
+// a method to get the number of positvie numbers. 
+
+
+public static double positive_count ()
+{
+   int count = 0; 
+
+
+   for (int i = 0 ; i < 20 ; i ++ )
+   {
+      if (nums[i] >= 0 )
+         count = count +1 ;
+   }
+
+      return count ; 
+
+
+
+}
+
+// a method to get the number of negative numbers. 
+
+
+public static double negative_count ()
+{
+   int count = 0; 
+
+
+   for (int i = 0 ; i < 20 ; i ++ )
+   {
+      if (nums[i] < 0 )
+         count = count +1 ;
+   }
+
+      return count ; 
+      
+
+
+}
+
+}
